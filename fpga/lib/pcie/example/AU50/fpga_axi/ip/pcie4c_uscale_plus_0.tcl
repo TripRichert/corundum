@@ -1,5 +1,10 @@
+if {[info exists ip_gen_dir]} {
+    set ip_gen_dirstr "-dir $ip_gen_dir"
+} else {
+    set ip_gen_dirstr ""
+}
 
-create_ip -name pcie4c_uscale_plus -vendor xilinx.com -library ip -module_name pcie4c_uscale_plus_0
+create_ip -name pcie4c_uscale_plus -vendor xilinx.com -library ip -module_name pcie4c_uscale_plus_0 {*}$ip_gen_dirstr
 
 set_property -dict [list \
     CONFIG.PL_LINK_CAP_MAX_LINK_SPEED {8.0_GT/s} \

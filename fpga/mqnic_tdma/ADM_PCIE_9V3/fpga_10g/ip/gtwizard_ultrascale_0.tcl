@@ -1,5 +1,10 @@
+if {[info exists ip_gen_dir]} {
+    set ip_gen_dirstr "-dir $ip_gen_dir"
+} else {
+    set ip_gen_dirstr ""
+}
 
-create_ip -name gtwizard_ultrascale -vendor xilinx.com -library ip -module_name gtwizard_ultrascale_0
+create_ip -name gtwizard_ultrascale -vendor xilinx.com -library ip -module_name gtwizard_ultrascale_0 {*}$ip_gen_dirstr
 
 set_property -dict [list CONFIG.preset {GTY-10GBASE-R}] [get_ips gtwizard_ultrascale_0]
 

@@ -1,5 +1,10 @@
+if {[info exists ip_gen_dir]} {
+    set ip_gen_dirstr "-dir $ip_gen_dir"
+} else {
+    set ip_gen_dirstr ""
+}
 
-create_ip -name cmac_usplus -vendor xilinx.com -library ip -module_name cmac_usplus_0
+create_ip -name cmac_usplus -vendor xilinx.com -library ip -module_name cmac_usplus_0 {*}$ip_gen_dirstr
 
 set_property -dict [list \
     CONFIG.CMAC_CAUI4_MODE {1} \

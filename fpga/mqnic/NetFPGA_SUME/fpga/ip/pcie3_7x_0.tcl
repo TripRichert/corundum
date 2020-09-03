@@ -1,5 +1,10 @@
+if {[info exists ip_gen_dir]} {
+    set ip_gen_dirstr "-dir $ip_gen_dir"
+} else {
+    set ip_gen_dirstr ""
+}
 
-create_ip -name pcie3_7x -vendor xilinx.com -library ip -module_name pcie3_7x_0
+create_ip -name pcie3_7x -vendor xilinx.com -library ip -module_name pcie3_7x_0 {*}$ip_gen_dirstr
 
 # Note: axisten_if_enable_client_tag setting appears to be inverted 
 set_property -dict [list \
